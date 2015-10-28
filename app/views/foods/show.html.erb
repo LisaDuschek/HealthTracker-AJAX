@@ -1,0 +1,34 @@
+<% content_for(:navbar) do %>
+<li><a href="/">Home</a></li>
+<li><a href="foods/new">Add new food</a></li>
+<% end %>
+
+
+<h2><%= @food.name %></h2>
+
+<% if @food.calories.any? %>
+  <h4>Calories of this food:</h4>
+
+  <ul>
+    <% @food.calrories.each do |calory| %>
+      <li>
+        <%= calory.amount %> |
+        <%= link_to "Edit", edit_food_calory_path(@food, calory) %> |
+        <%= link_to "Delete", food_calory_path(@food, calory),
+                                 :data => {:confirm => "Are you sure?",
+                                                :method => "delete"} %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no calories yet!</p>
+<% end %>
+
+<br>
+
+<p><%= link_to "Add calories", new_food_calory_path(@food) %></p>
+<p><%= link_to "Delete Food", food_path(@food),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+
+<p><%= link_to "Return to foods", foods_path %></p>

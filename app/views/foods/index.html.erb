@@ -1,0 +1,15 @@
+<% content_for(:navbar) do %>
+<li><a href="/">Home</a></li>
+<li><a href="foods/new">Add new food</a></li>
+<% end %>
+
+<h1>Health Tracker Deluxe-for the insecure among us</h1>
+
+<ul>
+  <% @foods.each do |food| %>
+    <li><%= link_to food.name, food_path(food) %></li>
+  <% end %>
+</ul>
+<hr>
+
+<%= link_to "Add New Food", new_food_path %>

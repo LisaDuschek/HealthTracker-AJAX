@@ -1,0 +1,7 @@
+<%= render('layouts/errors', :object => @calory) %>
+
+<%= form_for [@food, @task] do |f| %>
+  <%= f.label :amount %>
+  <%= f.text_field :amount %>
+  <p><%= f.submit %></p>
+<% end %>
